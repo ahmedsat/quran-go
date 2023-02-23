@@ -32,6 +32,7 @@ type Quran struct {
 	master     fyne.Window
 	imageBytes []byte
 	imageCount int
+	DarkTheme  bool
 }
 
 func (q *Quran) Run() (err error) {
@@ -59,7 +60,6 @@ func (q *Quran) Run() (err error) {
 	}
 
 	q.master.Show()
-	(*q.App).Run()
 
 	return
 }
@@ -71,7 +71,13 @@ func quit(q *Quran) (err error) {
 }
 
 func (q *Quran) refresh() (err error) {
-	q.imageBytes, err = q.Images.ReadFile(fmt.Sprintf("quran-images/%v.png", q.imageCount))
+
+	if q.DarkTheme {
+		q.imageBytes, err = q.Images.ReadFile(fmt.Sprintf("quran-images/dark/%v.png", q.imageCount))
+	} else {
+		q.imageBytes, err = q.Images.ReadFile(fmt.Sprintf("quran-images/%v.png", q.imageCount))
+	}
+
 	if err != nil {
 		return
 	}

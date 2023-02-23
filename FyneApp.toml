@@ -4,5 +4,5 @@ Website = "https://example.com"
 Icon = "Icon.png"
 Name = "Quran App"
 ID = "com.ahmedsat.quran"
-Version = "1.0.0"
+Version = "0.0.2"
 Build = 1
